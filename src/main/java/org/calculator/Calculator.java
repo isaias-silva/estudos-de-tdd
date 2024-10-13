@@ -59,7 +59,6 @@ public class Calculator {
         return values.pop();
     }
 
-
     private boolean hasPrecedence(char op1, char op2) {
         if (op2 == '(' || op2 == ')')
             return false;

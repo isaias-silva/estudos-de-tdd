@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class CalculatorTest {
     @Test
@@ -50,10 +51,18 @@ public class CalculatorTest {
 
     @Test
     public void shouldResolveMathExpression() throws IOException {
-        String expressionMock="(1+2)*3";
-        Calculator calculator= new Calculator();
-        float resultExpression=calculator.processExpression(expressionMock);
-        assertEquals(9,resultExpression,2);
+        String expressionMock = "(1+2)*3";
+        Calculator calculator = new Calculator();
+        float resultExpression = calculator.processExpression(expressionMock);
+        assertEquals(9, resultExpression, 2);
+
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void shouldErrorInDivisionZero() {
+        String expressionMock = "(10+3)/0";
+        Calculator calculator = new Calculator();
+        calculator.processExpression(expressionMock);
 
     }
 }
